@@ -1,0 +1,31 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+<h3 style="background-color:DodgerBlue;">All Student's Information is Here..!</h3>
+{% if db %}
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>email</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in db %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>
+                <a href="{% url 'update' i.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <form action="{% url 'delete' i.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<h4 class="text-center alert alert-info">No Records</h4>
+{% endif %}
+
+{% endblock content %}

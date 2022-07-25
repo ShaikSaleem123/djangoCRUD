@@ -1,0 +1,36 @@
+{% extends 'enroll/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-8 offset-2">
+        <h4 class="alert alert-info">Update Information</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+            <a href="{% url 'view' %}" class="btn btn-info">Back to Home</a>
+        </form>
+
+    </div>
+</div>
+{% endblock content %}
+<!--
+<div class="row">
+    <div class="text-center">
+        <h3 class="text-center alert alert-info">Edit and Update Student Details</h3>
+        {% for i in upd %}
+        <form action="{% url 'update' i.id %}" method="post">
+            {% csrf_token %}
+            
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name" value="{{i.name}}">
+
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{i.email}}">
+            
+            <input type="submit" class="btn btn-success" value="update">
+        </form>
+        {% endfor %}
+    </div>
+</div>
+-->
